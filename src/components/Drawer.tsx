@@ -1,5 +1,6 @@
+import { useCallback, useRef } from 'react'
 import clsx from 'clsx'
-import { useCallback, useEffect, useRef } from 'react'
+import {useKey} from 'react-use';
 
 type Props = {
   openDrawer: boolean
@@ -12,19 +13,7 @@ const Drawer: React.FC<Props> = ({ openDrawer, setOpenDrawer }) => {
     setOpenDrawer(false)
   },[setOpenDrawer])
 
-  // Esc キーでモーダルを閉じる
-  const escFunction = useCallback(
-    (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setOpenDrawer(false)
-      }
-    },
-    [setOpenDrawer],
-  )
-
-  useEffect(() => {
-    document.addEventListener('keydown', escFunction, false)
-  }, [escFunction])
+  useKey('Escape', () => setOpenDrawer(false))
 
   return (
     <>

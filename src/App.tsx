@@ -1,6 +1,7 @@
-import clsx from 'clsx';
 import React, { useState } from 'react';
+
 import './App.css';
+import Drawer from './components/Drawer';
 
 function App() {
   const [openDrawer, setOpenDrawer] = useState(false)
@@ -10,23 +11,12 @@ function App() {
       <div className="App">
         <header className="Header">
           <button className="DrawerButton" onClick={() => setOpenDrawer(true)}>
-            <img  className="DrawerButtonImg" src="../button.svg" alt=""/>
+            <img  className="DrawerButtonImg" src="../button.svg" alt="開く"/>
           </button>
-          Header</header>
+            Header
+          </header>
       </div>
-      <div className={clsx({
-        "Drawer": true,
-        "isShow": openDrawer
-      })}>
-      <div>
-        <button className="DrawerCloseButton" onClick={() => setOpenDrawer(false)}>
-          <img  className="DrawerCloseButtonImg" src="../close.svg" alt=""/>
-        </button></div>
-      </div>
-      <div className={clsx({
-        "overlay": true,
-        "isShow": openDrawer
-      })}></div>
+      <Drawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
     </>
   );
 }

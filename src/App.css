@@ -21,7 +21,7 @@
 }
 
 .DrawerButton:hover {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .DrawerButtonImg {
@@ -61,7 +61,7 @@
 }
 
 .DrawerCloseButton:hover {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .DrawerCloseButtonImg {

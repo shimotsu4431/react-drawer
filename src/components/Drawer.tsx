@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { useCallback, useEffect, useRef } from 'react'
 
 type Props = {
   openDrawer: boolean
@@ -6,6 +7,24 @@ type Props = {
 }
 
 const Drawer: React.FC<Props> = ({ openDrawer, setOpenDrawer }) => {
+  const overlay = useRef<HTMLDivElement>(null)
+  const handleClickOverlay = useCallback(() => {
+    setOpenDrawer(false)
+  },[setOpenDrawer])
+
+  // Esc キーでモーダルを閉じる
+  const escFunction = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpenDrawer(false)
+      }
+    },
+    [setOpenDrawer],
+  )
+
+  useEffect(() => {
+    document.addEventListener('keydown', escFunction, false)
+  }, [escFunction])
 
   return (
     <>
@@ -18,10 +37,14 @@ const Drawer: React.FC<Props> = ({ openDrawer, setOpenDrawer }) => {
             <img  className="DrawerCloseButtonImg" src="../close.svg" alt="閉じる"/>
           </button></div>
         </div>
-        <div className={clsx({
-        "overlay": true,
-        "isShow": openDrawer
-       })}></div>
+        <div
+          ref={overlay}
+          onClick={handleClickOverlay}
+          className={clsx({
+          "overlay": true,
+          "isShow": openDrawer
+        })}>
+        </div>
     </>
   )
 }

@@ -23,6 +23,10 @@ function App() {
           <img  className="DrawerCloseButtonImg" src="../close.svg" alt=""/>
         </button></div>
       </div>
+      <div className={clsx({
+        "overlay": true,
+        "isShow": openDrawer
+      })}></div>
     </>
   );
 }

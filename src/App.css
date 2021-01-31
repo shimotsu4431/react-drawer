@@ -35,21 +35,21 @@
   top: 0;
   left: 0;
   padding: 20px 40px;
-  height: 100vh;
+  height: calc(100vh - 40px);
   width: 240px;
   background-color: #fff;
   transform: translateX(-100%);
   transition: none;
 }
 
-.DrawerInner {
+/* .DrawerInner {
   padding-top: 20px;
-}
+} */
 
 .Drawer.isShow {
   transform: translateX(-0);
   z-index: 999;
-  transition: all 0.2s ease-out;
+  /* transition: all 0.2s ease-out; */
 }
 
 .DrawerCloseButton {
